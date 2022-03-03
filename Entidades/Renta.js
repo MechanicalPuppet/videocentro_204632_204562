@@ -1,19 +1,21 @@
 'use strict';
 
 const mongoose = require('mongoose');
-
+const clienteModel = require('../Entidades/Cliente');
+const empleadoModel = require('../Entidades/Empleado');
+const inventarioModel = require('../Entidades/Inventario');
 
 const rentaSchema = new mongoose.Schema({
     total: Number, //Cambiar a float
     tiempo: Number, //Son los días despues de la fecha de renta
     fechaRenta: Date,
-    inventario: { type: Schema.ObjectId, ref: "inventario" },
-    empleado: { type: Schema.ObjectId, ref: "empleado" },
-    cliente: { type: Schema.ObjectId, ref: "cliente" }
+    inventario: inventarioModel.schema,
+    empleado: empleadoModel.schema,
+    cliente: clienteModel.schema
 
 
 });
 
-const rentaSchema = mongoose.model('renta', rentaSchema);
+const rentaModel = mongoose.model('renta', rentaSchema);
 
-module.exports = rentaSchema;
+module.exports = rentaModel;

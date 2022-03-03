@@ -1,5 +1,32 @@
 const InventarioControlador = require('../Controladores/InventarioControlador');
+const RentaControlador = require('../Controladores/RentaControlador');
 const InventarioPersistencia = new InventarioControlador();
+const RentaPersistencia = new RentaControlador();
+
+let fecha = new Date("2022/03/03");
+let rentaPrueba = {
+    total: 521,
+    tiempo: 2,
+    fechaRenta: fecha,
+    inventario: { _id: '622054cbd5945fc757e87857' },
+    empleado:{ _id: '62203d2e5c64bd1df1933c38' },
+    cliente:{ _id: '62203c8d9a815c200475b2ec' }
+};
+
+RentaPersistencia.insertarDato(rentaPrueba).then((res)=> {
+    console.log("Se ha ingresado el dato correctamente" + res._id);
+}).catch((err) => {
+    console.log("Error");
+
+});
+
+/*
+InventarioPersistencia.consultarUnDato("622054cbd5945fc757e87857").then((res) => {
+    console.log("Se ha ingresado el dato correctamente " + res._id);
+}).catch((err) => {
+    console.log("Error");
+});
+
 
 const inventarioPrueba = {
     unidadesExistencia: 10,
@@ -14,7 +41,7 @@ InventarioPersistencia.insertarDato(inventarioPrueba).then((res) => {
     console.log("Error");
 });
 
-/*
+
 const OfertaPersistencia = require('../Controladores/OfertaControlador');
 const VideojuegoPersistencia = require('../Controladores/VideojuegoControlador');
 
