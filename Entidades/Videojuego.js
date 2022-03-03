@@ -3,7 +3,6 @@
 const mongoose = require('mongoose');
 
 const videojuegoSchema = new mongoose.Schema({
-    id: Number,
     nombre: String,
     precio: Number, //Cambiar a float    
     empresa: String,

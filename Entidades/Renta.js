@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 
 const rentaSchema = new mongoose.Schema({
-    id: Number,
     total: Number, //Cambiar a float
     tiempo: Number, //Son los días despues de la fecha de renta
     fechaRenta: Date,

@@ -10,3 +10,5 @@ mongoose.connect(DB)
 .catch(err =>{
     console.log(err);
 })
+
+module.exports = mongoose;

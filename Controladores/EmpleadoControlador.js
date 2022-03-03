@@ -1,17 +1,15 @@
 'use strict'
 
-const ofertaModel = require('../Entidades/Oferta');
-const ofertaPer = require('../Entidades/Oferta');
+const empleadoModel = require('../Entidades/Empleado');
+const empleadoPer = require('../Entidades/Empleado');
 const basededatos = require('../Persistencia/Mongodb');
 
-class OfertaPersistencia{
-
-
+class EmpleadoPersistencia{
 
     async insertarDato(nuevoDato){
-        const dato = new ofertaModel({
-            nombre: nuevoDato.nombre,
-            descuento: nuevoDato.descuento
+        const dato = new empleadoModel({
+            usuario: nuevoDato.usuario,
+            contraseña: nuevoDato.contraseña
         });
         await dato.save();
         console.log('se agrego correctamente el dato: '+ nuevoDato.nombre )
@@ -19,7 +17,7 @@ class OfertaPersistencia{
     }
 
     async eliminarDato(idBuscar){
-        const user = await ofertaModel.deleteOne({
+        const user = await empleadoModel.deleteOne({
             _id: idBuscar
         });
         if (user.deletedCount != 0){
@@ -31,7 +29,7 @@ class OfertaPersistencia{
     }
 
     async actualizarDato(idBuscar, clasificacionNueva){
-        const user = await ofertaModel.updateOne({
+        const user = await empleadoModel.updateOne({
             _id: idBuscar
         }, {
             $set: {
@@ -47,18 +45,18 @@ class OfertaPersistencia{
     }
 
     async consultarUnDato(idBuscar) {
-        const user = await ofertaModel.findOne({
+        const user = await empleadoModel.findOne({
           _id: idBuscar
         });
         return user;
       }
     
     async consultarTodosDatos() {
-      const user = await ofertaModel.find();
+      const user = await empleadoModel.find();
       return user;
     }
 
 
 }
 
-module.exports = OfertaPersistencia;
+module.exports = EmpleadoPersistencia;

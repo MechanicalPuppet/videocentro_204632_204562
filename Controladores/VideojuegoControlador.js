@@ -1,17 +1,20 @@
 'use strict'
 
-const ofertaModel = require('../Entidades/Oferta');
-const ofertaPer = require('../Entidades/Oferta');
+const videojuegoModel = require('../Entidades/Videojuego');
+const videojuegoPer = require('../Entidades/Videojuego');
 const basededatos = require('../Persistencia/Mongodb');
 
-class OfertaPersistencia{
+class VideojuegoPersistencia{
 
 
 
     async insertarDato(nuevoDato){
-        const dato = new ofertaModel({
+        const dato = new videojuegoModel({
             nombre: nuevoDato.nombre,
-            descuento: nuevoDato.descuento
+            precio: nuevoDato.precio, //Cambiar a float    
+            empresa: nuevoDato.empresa,
+            categoria: nuevoDato.categoria,
+            oferta: nuevoDato.oferta
         });
         await dato.save();
         console.log('se agrego correctamente el dato: '+ nuevoDato.nombre )
@@ -19,7 +22,7 @@ class OfertaPersistencia{
     }
 
     async eliminarDato(idBuscar){
-        const user = await ofertaModel.deleteOne({
+        const user = await videojuegoModel.deleteOne({
             _id: idBuscar
         });
         if (user.deletedCount != 0){
@@ -31,7 +34,7 @@ class OfertaPersistencia{
     }
 
     async actualizarDato(idBuscar, clasificacionNueva){
-        const user = await ofertaModel.updateOne({
+        const user = await videojuegoModel.updateOne({
             _id: idBuscar
         }, {
             $set: {
@@ -47,18 +50,18 @@ class OfertaPersistencia{
     }
 
     async consultarUnDato(idBuscar) {
-        const user = await ofertaModel.findOne({
+        const user = await videojuegoModel.findOne({
           _id: idBuscar
         });
         return user;
       }
     
     async consultarTodosDatos() {
-      const user = await ofertaModel.find();
+      const user = await videojuegoModel.find();
       return user;
     }
 
 
 }
 
-module.exports = OfertaPersistencia;
+module.exports = VideojuegoPersistencia;

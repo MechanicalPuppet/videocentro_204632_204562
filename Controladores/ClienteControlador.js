@@ -1,17 +1,20 @@
 'use strict'
 
-const ofertaModel = require('../Entidades/Oferta');
-const ofertaPer = require('../Entidades/Oferta');
+const clienteModel = require('../Entidades/Cliente');
+const clientePer = require('../Entidades/Cliente');
 const basededatos = require('../Persistencia/Mongodb');
 
-class OfertaPersistencia{
+class ClientePersistencia{
 
 
 
     async insertarDato(nuevoDato){
-        const dato = new ofertaModel({
-            nombre: nuevoDato.nombre,
-            descuento: nuevoDato.descuento
+        const dato = new clienteModel({
+            usuario: nuevoDato.usuario,
+    contraseña: nuevoDato.contraseña, //puede dar error
+    direccion: nuevoDato.direccion,
+    telefono: nuevoDato.telefono
+            
         });
         await dato.save();
         console.log('se agrego correctamente el dato: '+ nuevoDato.nombre )
@@ -19,7 +22,7 @@ class OfertaPersistencia{
     }
 
     async eliminarDato(idBuscar){
-        const user = await ofertaModel.deleteOne({
+        const user = await clienteModel.deleteOne({
             _id: idBuscar
         });
         if (user.deletedCount != 0){
@@ -31,7 +34,7 @@ class OfertaPersistencia{
     }
 
     async actualizarDato(idBuscar, clasificacionNueva){
-        const user = await ofertaModel.updateOne({
+        const user = await clienteModel.updateOne({
             _id: idBuscar
         }, {
             $set: {
@@ -47,18 +50,18 @@ class OfertaPersistencia{
     }
 
     async consultarUnDato(idBuscar) {
-        const user = await ofertaModel.findOne({
+        const user = await clienteModel.findOne({
           _id: idBuscar
         });
         return user;
       }
     
     async consultarTodosDatos() {
-      const user = await ofertaModel.find();
+      const user = await clienteModel.find();
       return user;
     }
 
 
 }
 
-module.exports = OfertaPersistencia;
+module.exports = ClientePersistencia;

@@ -1,25 +1,29 @@
 'use strict'
 
-const ofertaModel = require('../Entidades/Oferta');
-const ofertaPer = require('../Entidades/Oferta');
+const rentaModel = require('../Entidades/Renta');
+const rentaPer = require('../Entidades/Renta');
 const basededatos = require('../Persistencia/Mongodb');
 
-class OfertaPersistencia{
+class RentaPersistencia{
 
 
 
     async insertarDato(nuevoDato){
-        const dato = new ofertaModel({
-            nombre: nuevoDato.nombre,
-            descuento: nuevoDato.descuento
-        });
+        const dato = new rentaModel({
+            total: nuevoDato.total, //Cambiar a float
+    tiempo: nuevoDato.tiempo, //Son los días despues de la fecha de renta
+    fechaRenta: nuevoDato.fechaRenta,
+    inventario: nuevoDato.inventario,
+    empleado: nuevoDato.empleado,
+    cliente: nuevoDato.cliente});
+
         await dato.save();
         console.log('se agrego correctamente el dato: '+ nuevoDato.nombre )
         return dato;
     }
 
     async eliminarDato(idBuscar){
-        const user = await ofertaModel.deleteOne({
+        const user = await rentaModel.deleteOne({
             _id: idBuscar
         });
         if (user.deletedCount != 0){
@@ -31,7 +35,7 @@ class OfertaPersistencia{
     }
 
     async actualizarDato(idBuscar, clasificacionNueva){
-        const user = await ofertaModel.updateOne({
+        const user = await rentaModel.updateOne({
             _id: idBuscar
         }, {
             $set: {
@@ -47,18 +51,18 @@ class OfertaPersistencia{
     }
 
     async consultarUnDato(idBuscar) {
-        const user = await ofertaModel.findOne({
+        const user = await rentaModel.findOne({
           _id: idBuscar
         });
         return user;
       }
     
     async consultarTodosDatos() {
-      const user = await ofertaModel.find();
+      const user = await rentaModel.find();
       return user;
     }
 
 
 }
 
-module.exports = OfertaPersistencia;
+module.exports = RentaPersistencia;

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 
 const inventarioSchema = new mongoose.Schema({
-    id: Number,
     unidadesExistencia: Number,
     unidadesTienda: Number,
     videojuego: { type: Schema.ObjectId, ref: "videojuegos" }
