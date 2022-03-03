@@ -1,12 +1,11 @@
 'use strict';
 const mongoose = require('mongoose');
-
+const videoJuegoModel = require('../Entidades/Videojuego');
 
 const inventarioSchema = new mongoose.Schema({
-    unidadesExistencia: Number,
-    unidadesTienda: Number,
-    videojuego: { type: Schema.ObjectId, ref: "videojuegos" }
-
+    unidadesExistencia: Number, // Las unidades disponibles
+    unidadesTienda: Number, // Las unidades totales del video centro
+    videojuego: videoJuegoModel.schema
 });
 
 const inventarioModel = mongoose.model('inventario', inventarioSchema);

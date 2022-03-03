@@ -3,7 +3,7 @@
 const rentaModel = require('../Entidades/Renta');
 const rentaPer = require('../Entidades/Renta');
 const basededatos = require('../Persistencia/Mongodb');
-
+const InventarioControlador = require('../Controladores/InventarioControlador');
 class RentaPersistencia{
 
 
@@ -16,6 +16,7 @@ class RentaPersistencia{
     inventario: nuevoDato.inventario,
     empleado: nuevoDato.empleado,
     cliente: nuevoDato.cliente});
+   
 
         await dato.save();
         console.log('se agrego correctamente el dato: '+ nuevoDato.nombre )
