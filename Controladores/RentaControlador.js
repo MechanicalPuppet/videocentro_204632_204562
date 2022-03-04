@@ -4,6 +4,7 @@ const rentaModel = require('../Entidades/Renta');
 const rentaPer = require('../Entidades/Renta');
 const basededatos = require('../Persistencia/Mongodb');
 const InventarioControlador = require('../Controladores/InventarioControlador');
+const inventarioModel = require('../Entidades/Inventario');
 const InventarioPersistencia = new InventarioControlador();
 class RentaPersistencia {
 
@@ -20,22 +21,19 @@ class RentaPersistencia {
         });
 
         await dato.save();
-        
-        let inventario2 = InventarioPersistencia.consultarUnDato(nuevoDato.inventario._id);
-
-        const inventarioPrueba = {
-            unidadesExistencia: inventario2.unidadesExistencia - 1,
-            unidadesTienda: inventario2.unidadesTienda,
-            videojuego: { _id: inventario2.videojuego._id }
-        };
-        console.log(inventarioPrueba);
-        InventarioPersistencia.actualizarDato(nuevoDato.inventario._id, inventarioPrueba)
+       
+        const inventario2 = await InventarioPersistencia.consultarUnDato(nuevoDato.inventario);
+        InventarioPersistencia.actualizarDato(nuevoDato.inventario, inventario2.unidadesExistencia-1);
         
         console.log('se agrego correctamente el dato: ' + nuevoDato.nombre)
         return dato;
     }
 
     async eliminarDato(idBuscar) {
+        const renta = await this.consultarUnDato(idBuscar);
+        const inventario2 = await InventarioPersistencia.consultarUnDato(renta.inventario);
+        await InventarioPersistencia.actualizarDato(renta.inventario, inventario2.unidadesExistencia+1);
+
         const user = await rentaModel.deleteOne({
             _id: idBuscar
         });

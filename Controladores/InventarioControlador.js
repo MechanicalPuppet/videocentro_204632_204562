@@ -29,16 +29,16 @@ class InventarioPersistencia{
         return user;
     }
 
-    async actualizarDato(idBuscar, clasificacionNueva){
+    async actualizarDato(idBuscar, numExistencias){
         const user = await inventarioModel.updateOne({
             _id: idBuscar
         }, {
             $set: {
-                clasificacion: clasificacionNueva
+                unidadesExistencia: numExistencias
             }
         });
         if (user.modifiedCount != 0){
-            console.log('El id '+idBuscar+' se actualizo correctamente con el dato nuevo: '+clasificacionNueva)
+            console.log('El id '+idBuscar+' se actualizo correctamente con el dato nuevo: '+numExistencias)
         }else{
             console.log('El id '+ idBuscar+ ' no existe');
         }
