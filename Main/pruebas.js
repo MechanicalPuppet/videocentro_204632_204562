@@ -14,6 +14,9 @@ const ofertaPersistencia = new ofertaControlador();
 
 
 
+
+
+
 /*
 InventarioPersistencia.actualizarDato('622054cbd5945fc757e87857',8).then((res) => {
     console.log("Se ha ingresado el dato correctamente" );
@@ -150,11 +153,7 @@ InventarioPersistencia.eliminarDato('62213cdd8a3a13176e64f60b').then((res)=> {
 
 });
 */
-RentaPersistencia.eliminarDato('62215d7b8a3a13176e64f61b').then((res)=> {
-    console.log("Se ha eliminado el dato correctamente");
-}).catch((err) => {
-    console.log("Error");
-});
+
 
 
 
