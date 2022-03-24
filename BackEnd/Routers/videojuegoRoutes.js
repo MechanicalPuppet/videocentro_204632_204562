@@ -1,5 +1,5 @@
 const express = require('express');
-const VideojuegoPersistencia = require('../BackEnd/Controladores/VideojuegoControlador');
+const VideojuegoPersistencia = require('../Controladores/VideojuegoControlador');
 const router = express.Router();
 const videojuego = new VideojuegoPersistencia()
 
@@ -27,15 +27,16 @@ router.route("/").post(async (req, res) => {
     });
 
 }).put(async (req, res) => {
-    const videojuegoNew = {
-        nombre: req.body.nombre // ! NO SABEMOS QUÉ SUCEDE AQUÍ AYUDA POR FAVOR POR QUÉ ESTÁN SIMILARES A LOS DE ARRIBA?
-    };
-
-    const data = await videojuego.actualizarDato(videojuegoNew);
+    const idBuscar = req.body.id;
+    const nombre = req.body.nombre; 
+    // const videojuegoNew = {
+    //     nombre: req.body.nombre // ! NO SABEMOS QUÉ SUCEDE AQUÍ AYUDA POR FAVOR POR QUÉ ESTÁN SIMILARES A LOS DE ARRIBA?
+    // };
+    
+    const data = await videojuego.actualizarDato(idBuscar,nombre); // ! Solo se actualizara el nombre
     res.status(201).json({
         status: 'Actualizado',
         body: data
-
     });
 });
 

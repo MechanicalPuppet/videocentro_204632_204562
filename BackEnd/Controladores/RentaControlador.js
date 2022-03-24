@@ -1,10 +1,9 @@
 'use strict'
 
-const rentaModel = require('../../Entidades/Renta');
-const rentaPer = require('../../Entidades/Renta');
+const rentaModel = require('../Entidades/Renta');
 const basededatos = require('../Persistencia/Mongodb');
 const InventarioControlador = require('../Controladores/InventarioControlador');
-const inventarioModel = require('../../Entidades/Inventario');
+const inventarioModel = require('../Entidades/Inventario');
 const InventarioPersistencia = new InventarioControlador();
 class RentaPersistencia {
 

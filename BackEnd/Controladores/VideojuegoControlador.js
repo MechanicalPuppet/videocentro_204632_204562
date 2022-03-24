@@ -1,6 +1,6 @@
 'use strict'
 
-const videojuegoModel = require('../../Entidades/Videojuego');
+const videojuegoModel = require('../Entidades/Videojuego');
 const basededatos = require('../Persistencia/Mongodb');
 
 class VideojuegoPersistencia {
@@ -30,12 +30,12 @@ class VideojuegoPersistencia {
         return user;
     }
 
-    async actualizarDato(idBuscar, clasificacionNueva) {
+    async actualizarDato(idBuscar, nombreNuevo) {
         const user = await videojuegoModel.updateOne({
             _id: idBuscar
         }, {
             $set: {
-                clasificacion: clasificacionNueva
+                nombre: nombreNuevo
             }
         });
         if (user.modifiedCount != 0) {

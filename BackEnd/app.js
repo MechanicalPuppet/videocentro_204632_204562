@@ -1,11 +1,12 @@
 const express = require('express');
 const morgan = require("morgan");
 const cors = require("cors");
-const empleadoRouter = require('../BackEnd/Routers/empleadoRoutes');
-const videojuegoRouter = require('../BackEnd/Routers/videojuegoRoutes');
-const inventarioRouter = require ('../BackEnd/Routers/inventarioRoutes');
-const rentaRouter = require('../BackEnd/Routers/rentaRouters');
-const clienteRouter = require ('../BackEnd/Routers/clienteRoutes');
+
+const empleadoRouter = require('./Routers/empleadoRoutes');
+const videojuegoRouter = require('./Routers/videojuegoRoutes');
+const inventarioRouter = require ('./Routers/inventarioRoutes');
+const rentaRouter = require('./Routers/rentaRouters');
+const clienteRouter = require ('./Routers/clienteRoutes');
 
 const corsOptions = {
     origin:"*",
@@ -13,7 +14,7 @@ const corsOptions = {
     optionSuccessStatus:200,
   } 
 
-const globalErrorHandler = require('../BackEnd/Routers/appError');
+const globalErrorHandler = require('./Routers/appError');
 const app = express();
 
 // Middleware

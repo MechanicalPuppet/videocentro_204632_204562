@@ -1,5 +1,4 @@
 const express = require('express');
-// const empleadoController = require('../Controllers/empleadoController');
 const EmpleadoPersistencia = require('../Controladores/EmpleadoControlador');
 
 const router = express.Router();
