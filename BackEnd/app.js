@@ -7,6 +7,7 @@ const videojuegoRouter = require('./Routers/videojuegoRoutes');
 const inventarioRouter = require ('./Routers/inventarioRoutes');
 const rentaRouter = require('./Routers/rentaRouters');
 const clienteRouter = require ('./Routers/clienteRoutes');
+const authController = require('./Autenticacion/authController');
 
 const corsOptions = {
     origin:"*",
@@ -23,6 +24,7 @@ app.use(morgan('dev'));
 app.use(cors(corsOptions));
 
 //Routers
+app.use('/api/v1/auth', authController);
 app.use('/api/v1/empleado', empleadoRouter);
 app.use('/api/v1/videojuego', videojuegoRouter);
 app.use('/api/v1/inventario', inventarioRouter);
