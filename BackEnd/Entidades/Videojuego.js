@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const ofertaModel = require('../Entidades/Oferta');
+const ofertaModel = require('./Oferta');
 
 const videojuegoSchema = new mongoose.Schema({
     nombre: String,

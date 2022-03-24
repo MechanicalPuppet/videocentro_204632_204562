@@ -1,5 +1,5 @@
 const express = require('express');
-const VideojuegoPersistencia = require('../Controladores/VideojuegoControlador');
+const VideojuegoPersistencia = require('../BackEnd/Controladores/VideojuegoControlador');
 const router = express.Router();
 const videojuego = new VideojuegoPersistencia()
 

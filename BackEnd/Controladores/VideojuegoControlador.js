@@ -1,6 +1,6 @@
 'use strict'
 
-const videojuegoModel = require('../Entidades/Videojuego');
+const videojuegoModel = require('../../Entidades/Videojuego');
 const basededatos = require('../Persistencia/Mongodb');
 
 class VideojuegoPersistencia {

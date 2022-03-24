@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config({path: './config.env'});
-const app = require('./app');
+const app = require('../app');
 const DB = 'mongodb://localhost:27017/videocentro';
 
 //Inicializa la base de datos 
@@ -12,5 +10,13 @@ mongoose.connect(DB)
     .catch(err => {
         console.log(err);
     })
+
+
+    //Levanto el servidor 
+const port = 3000;
+
+const server = app.listen(port, () => {
+  console.log(`App running on port ${port}...`);
+});
 
 module.exports = mongoose;

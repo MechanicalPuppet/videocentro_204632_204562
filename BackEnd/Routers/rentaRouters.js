@@ -1,5 +1,5 @@
 const express = require('express');
-const RentaPersistencia = require('../Controladores/RentaControlador');
+const RentaPersistencia = require('../BackEnd/Controladores/RentaControlador');
 const router = express.Router();
 const renta = new RentaPersistencia()
 

@@ -1,7 +1,7 @@
 'use strict'
 
-const inventarioModel = require('../Entidades/Inventario');
-const inventarioPer = require('../Entidades/Inventario');
+const inventarioModel = require('../../Entidades/Inventario');
+const inventarioPer = require('../../Entidades/Inventario');
 const basededatos = require('../Persistencia/Mongodb');
 
 class InventarioPersistencia{
