@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require("morgan");
 const cors = require("cors");
 
+const ofertaRouter = require('./Routers/ofertaRoutes');
 const empleadoRouter = require('./Routers/empleadoRoutes');
 const videojuegoRouter = require('./Routers/videojuegoRoutes');
 const inventarioRouter = require ('./Routers/inventarioRoutes');
@@ -24,6 +25,7 @@ app.use(morgan('dev'));
 app.use(cors(corsOptions));
 
 //Routers
+app.use('/api/v1/oferta', ofertaRouter);
 app.use('/api/v1/auth', authController);
 app.use('/api/v1/empleado', empleadoRouter);
 app.use('/api/v1/videojuego', videojuegoRouter);
