@@ -1,4 +1,4 @@
-const URLCliente = "http://localhost:3312/api/v1/cliente/";
+const URLVideojuego = "http://localhost:3312/api/v1/videojuego/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
@@ -17,27 +17,25 @@ agregarEventoRegistrar();
 
 function agregarEventoRegistrar(){
     const btnRegistrar = document.getElementById("registrarse");
-    btnRegistrar.addEventListener("click",agregarCliente);
+    btnRegistrar.addEventListener("click",agregarVideojuego);
 }
 
-async function agregarCliente(){
-    const inUsuario = document.getElementById("usuario").value;
-    const inContraseña = document.getElementById("contraseña").value;
-    const inDireccion = document.getElementById("direccion").value;
-    const inTelefono = document.getElementById("telefono").value;
-
-
-
+async function agregarVideojuego(){
+    const inNombre = document.getElementById("nombre").value;
+    const inPresio = document.getElementById("presio").value;
+    const inEmpresa = document.getElementById("empresa").value;
+    const inCategoria = document.getElementById("categoria").value;
     const vid = {
-        usuario:inUsuario,
-        contraseña:inContraseña,
-        direccion:inDireccion,
-        telefono:inTelefono,
+        nombre:inNombre,
+        presio:inPresio,
+        empresa:inEmpresa,
+        categoria:inCategoria,
+
     };
 
     configFetch.body = JSON.stringify(vid);
 
-    const resData= await fetch(URLCliente,configFetch)
+    const resData= await fetch(URLVideojuego,configFetch)
     .then(res=> res.json());
 
     alert(resData.status);

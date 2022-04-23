@@ -1,4 +1,4 @@
-const URLOferta = "http://localhost:3312/api/v1/oferta/";
+const URLVideojuego = "http://localhost:3312/api/v1/videojuego/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
@@ -22,7 +22,7 @@ function agregarEventoEliminar(){
 
 async function eliminarVideojuego(){
     const textId = document.getElementById("id").value;
-    const resData = await fetch(URLOferta+textId,configFetch)
+    const resData = await fetch(URLVideojuego+textId,configFetch)
     .then(res=> res.json());
 
     alert(resData.status);

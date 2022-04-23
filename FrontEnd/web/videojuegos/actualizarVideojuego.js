@@ -1,4 +1,4 @@
-const URLCliente = "http://localhost:3312/api/v1/cliente/";
+const URLVideojuego = "http://localhost:3312/api/v1/videojuego/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
@@ -16,30 +16,30 @@ agregarEventoActualizar();
 
 function agregarEventoActualizar() {
     const btnActualizar = document.getElementById("actualizar");
-    btnActualizar.addEventListener("click", actualizarCliente);
+    btnActualizar.addEventListener("click", actualizarVideojuego);
 }
 
-async function actualizarCliente() {
-    const inNombre = document.getElementById("usuario").value;
-    const inContraseña = document.getElementById("contraseña").value;
-    const inDireccion = document.getElementById("direccion").value;
-    const inTelefono = document.getElementById("telefono").value;
+async function actualizarVideojuego() {
+    const inNombre = document.getElementById("nombre").value;
+    const inPrecio = document.getElementById("precio").value;
+    const inEmpresa = document.getElementById("empresa").value;
+    const inCategoria = document.getElementById("categoria").value;
     const update = {
-        usuario:inNombre,
-        contraseña:inContraseña,
-        direccion:inDireccion,
-        telefono: inTelefono
+        nombre:inNombre,
+        precio: inPrecio,
+        empresa:inEmpresa,
+        categoria: inCategoria
     };
     configFetch.method = "PUT";
     configFetch.body = JSON.stringify(update);
-    const resData = await fetch(URLCliente, configFetch)
+    const resData = await fetch(URLVideojuego, configFetch)
         .then(res => res.json());
 
     alert(resData.status);
 }
 
 function agregarEventoId() {
-    const inNombre = document.getElementById("usuario");
+    const inNombre = document.getElementById("nombre");
     inNombre.addEventListener("keyup", agregarCampos)
 }
 
@@ -49,7 +49,7 @@ async function agregarCampos(event) {
 
     if (!/^ *$/.test(id)) {
         configFetch.method = "GET";
-        const data = await fetch(URLCliente + id, configFetch)
+        const data = await fetch(URLOferta + id, configFetch)
             .then(res => res.json())
             .catch(error => null);
         cambiarValores(data);
@@ -57,15 +57,15 @@ async function agregarCampos(event) {
 }
 
 function cambiarValores(data) {
-    const inNombre = document.getElementById("usuario");
-    const inContraseña = document.getElementById("contraseña");
-    const inDireccion = document.getElementById("direccion");
-    const inTelefono = document.getElementById("telefono");
+    const inNombre = document.getElementById("nombre");
+    const inPrecio = document.getElementById("precio").value;
+    const inEmpresa = document.getElementById("empresa").value;
+    const inCategoria = document.getElementById("categoria").value;
 
     inNombre.value = data.nombre;
-    inContraseña.value = data.contraseña;
-    inDireccion.value = data.direccion;
-    inTelefono.value = data.telefono;
+    inPrecio.value = data.precio;
+    inEmpresa.value = data.empresa;
+    inCategoria.value = data.categoria;
 }
 
 function agregarEventoRegresar() {

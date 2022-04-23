@@ -21,24 +21,30 @@ and open the template in the editor.
               <button type="button" name="back" onclick="history.back()"></button>
             <ul>
                 
-                <li><a href="control?tarea=agregaroferta">¡Agregar oferta!</a></li>
-                <li><a href="control?tarea=editaroferta">¡Editar oferta!</a></li>
-                <li><a href="control?tarea=eliminaroferta">¡Eliminar oferta!</a></li>
-                <li><a href="control?tarea=consultarofertas">¡Consultar ofertas!</a></li>
+                <li><a href="control?tarea=agregarvideojuego">¡Agregar oferta!</a></li>
+                <li><a href="control?tarea=editarvideojuego">¡Editar oferta!</a></li>
+                <li><a href="control?tarea=eliminarvideojuego">¡Eliminar oferta!</a></li>
+                <li><a href="control?tarea=consultarvideojuegos">¡Consultar ofertas!</a></li>
             </ul>
             
         </nav>
         
         <article>
 
-            <h1> ¡ACTUALIZAR OFERTA!</h1>
+            <h1> ¡ACTUALIZAR VIDEOJUEGO!</h1>
 
             <section>
                 <div id="contenedor">
-                <input type="text" placeholder="Nombre de la oferta" required id="nombreOferta">
+                <input type="text" placeholder="Nombre del videojuego" required id="nombreVideojuego">
                 <hr>
                 <br>
-                <input type="number" placeholder="Descuento" required id="descuento">
+                <input type="number" placeholder="Precio" required id="precio">
+                <br>
+                <input type="text" placeholder="Empresa" required id="empresa">
+                <hr>
+                <br>
+                <input type="text" placeholder="Categoria" required id="categoria">
+                <hr>
                 <br>
                 <input type="submit" value="Actualizar" id="actualizar">
                 <br>
@@ -47,7 +53,7 @@ and open the template in the editor.
               </section>
         
             </main>
-            <script src="actualizarOferta.js"></script>
+            <script src="actualizarVideojuego.js"></script>
             
 
         </article>
