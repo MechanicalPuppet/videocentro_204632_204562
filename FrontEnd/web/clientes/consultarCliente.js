@@ -1,4 +1,4 @@
-const URLOferta = "http://localhost:3312/api/v1/videojuego/";
+const URLCliente = "http://localhost:3312/api/v1/videojuego/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
@@ -11,10 +11,10 @@ const configFetch = {
 };
 
 agregarEventoRegresar();
-consultarOferta();
+consultarClientes();
 
-async function consultarOferta(){
-    const data= await fetch(URLOferta,configFetch)
+async function consultarClientes(){
+    const data= await fetch(URLCliente,configFetch)
     .then(response => response.json());
     const tbody = document.getElementsByTagName("tbody")[0];
     tbody.innerHTML="";
@@ -27,12 +27,15 @@ async function consultarOferta(){
 
 function agregarFila(data){
     const row = document.createElement("tr");
-    const colNombre = document.createElement("td");
-    const colDescuento = document.createElement("td");
-    colNombre.innerText=data.titulo;
-    colDescuento.innerText=data.genero;
-    row.innerHTML += colNombre.outerHTML;
-    row.innerHTML += colDescuento.outerHTML;
+    const colUsuario = document.createElement("td");
+    const colDireccion = document.createElement("td");
+    const colTelefono = document.createElement("td");
+    colUsuario.innerText=data.titulo;
+    colDireccion.innerText=data.genero;
+    colTelefono.innerText=data.clasificacion;
+    row.innerHTML += colUsuario.outerHTML;
+    row.innerHTML += colDireccion.outerHTML;
+    row.innerHTML += colTelefono.outerHTML;
     return row;
 
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>AGREGAR CLIENTE</title>
+        <meta charset="UTF-8">
+        <link href="/FrontEnd/estilos/estilosIndex.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <header>
+            <h2> Videocentro "Silent Games" </h2> <h3><em> José Brandon Hernández y Victor Gutierrez</em> </h3>
+            
+        </header>
+         <nav>
+              <button type="button" name="back" onclick="history.back()"></button>
+            <ul>
+                
+                <li><a href="control?tarea=agregarCliente">¡Agregar cliente!</a></li>
+                <li><a href="control?tarea=editarCliente">¡Editar cliente!</a></li>
+                <li><a href="control?tarea=eliminarCliente">¡Eliminar cliente!</a></li>
+                <li><a href="control?tarea=consultarCliente">¡Consultar ofertas!</a></li>
+            </ul>
+            
+        </nav>
+        
+        <article>
+            <h1> ¡AGREGAR CLIENTE!</h1>
+            <form action="agregaCliente">
+                <ul>
+                    <li><input type="text" name="nombreCliente" placeholder="Nombre cliente" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
+                    <li><input type="text" name="contraseña" placeholder="Contraseña" maxlength="20"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
+                    <li><input type="text" name="direccion" placeholder="Direccion" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
+                    <li><input type="number" name="telefono" placeholder="Telefono" style="width: 200px" required/></li>
+                    <li><input type="submit" value ="Agregar cliente" />
+                </ul>
+                </form>
+            
+        </article>
+        
+        <footer>
+            
+            <h5>Todos los derechos reservados.</h5>
+            <h6>Podría interesarte: <a href="https://ideasnuevas.net/wp-content/uploads/2016/08/Wallpapersxl-Perritos-Bonitos-Seguro-Que-Estabas-Esperando-Otro-Fondo-De-Perros-Pues-Ya-No-Tienes-276709-1440x1080.jpg">Contenido vital que todos deben ver.</a></h6>
+            
+            
+        </footer>
+    </body>
+</html>
