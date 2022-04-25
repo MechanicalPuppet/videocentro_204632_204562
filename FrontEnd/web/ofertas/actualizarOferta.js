@@ -1,4 +1,4 @@
-const URLOferta = "http://localhost:3312/api/v1/oferta/";
+const URLOferta = "http://localhost:3000/api/v1/oferta/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
@@ -20,7 +20,7 @@ function agregarEventoActualizar() {
 }
 
 async function actualizarOferta() {
-    const inNombre = document.getElementById("nombre").value;
+    const inNombre = document.getElementById("nombreOferta").value;
     const inDescuento = document.getElementById("descuento").value;
     const update = {
         nombre:inNombre,

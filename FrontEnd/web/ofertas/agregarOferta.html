@@ -31,11 +31,11 @@ and open the template in the editor.
         
         <article>
             <h1> ¡AGREGAR OFERTA!</h1>
-            <form action="agregaoferta">
+            <form >
                 <ul>
-                    <li><input type="text" name="nombreOferta" placeholder="Nombre Oferta" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
-                    <li><input type="number" name="totalDescuento" placeholder="Descuento" min="1" max ="100" style="width: 200px" required/></li>
-                    <li><input type="submit" value ="Agregar oferta" />
+                    <li><input type="text" id="nombreOferta" name="nombreOferta" placeholder="Nombre Oferta" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
+                    <li><input type="number" id="totalDescuento" name="totalDescuento" placeholder="Descuento" min="1" max ="100" style="width: 200px" required/></li>
+                    <li><input type="submit" value ="Agregar oferta" id ="registrarte"/> </li>
                 </ul>
                 </form>
             
@@ -48,5 +48,6 @@ and open the template in the editor.
             
             
         </footer>
+        <script src="agregarOferta.js"></script>
     </body>
 </html>

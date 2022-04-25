@@ -6,12 +6,12 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>AGREGAR OFERTA</title>
+        <title>AGREGAR VIDEOJUEGO</title>
         <meta charset="UTF-8">
         <link href="/FrontEnd/estilos/estilosIndex.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body onload="agregarLista()">
         
         <header>
             <h2> Videocentro "Silent Games" </h2> <h3><em> José Brandon Hernández y Victor Gutierrez</em> </h3>
@@ -31,13 +31,17 @@ and open the template in the editor.
         
         <article>
             <h1> ¡AGREGAR VIDEOJUEGO!</h1>
-            <form action="agregavideojuego">
+            <form >
                 <ul>
-                    <li><input type="text" name="nombreVideojuego" placeholder="Nombre Videojuego" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
-                    <li><input type="number" name="precio" placeholder="Presio" min="1" max ="1000" style="width: 200px" required/></li>
-                    <li><input type="text" name="empresa" placeholder="Empresa" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/></li>
-                    <li><input type="text" name="totalDescuento" placeholder="Descuento" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/></li>
-                    <li><input type="submit" value ="Agregar Videojuego" />
+                    <li><input type="text" id="nombreVideojuego" name="nombreVideojuego" placeholder="Nombre Videojuego" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/> </li>
+                    <li><input type="number" id="precio" name="precio" placeholder="Precio" min="1" max ="1000" style="width: 200px" required/></li>
+                    <li><input type="text" id="empresa"  name="empresa" placeholder="Empresa" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/></li>
+                    <li><input type="text" id="categoria"   name="categoria" placeholder="Categoria" maxlength="35"  style="width: 200px" required pattern="[a-zA-Z ]{3,35}"/></li>
+                    <select name="ofertas" id="ofertas">
+                        <option value="Call Of Duty: Vanguard">Call Of Duty: Vanguard</option>
+                        <option value="Halo Infinite">Halo Infinite</option>
+                    </select>
+                    <li><input type="submit"  value ="Agregar Videojuego" id="registrarte" /> </li>
                 </ul>
                 </form>
             
@@ -50,5 +54,7 @@ and open the template in the editor.
             
             
         </footer>
+
+        <script src="agregarVideojuego.js"></script>
     </body>
 </html>

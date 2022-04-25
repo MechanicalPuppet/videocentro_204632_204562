@@ -10,6 +10,7 @@ router.route('/').get(async (req, res) => {
 
 
 router.route("/").post(async (req, res) => {
+    
     const ofertaNew = {
         nombre: req.body.nombre,
         descuento: req.body.descuento
