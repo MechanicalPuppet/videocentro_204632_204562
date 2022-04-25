@@ -10,8 +10,8 @@ const configFetch = {
     }
 };
 
-agregarEventoId();
-agregarEventoRegresar();
+
+
 agregarEventoActualizar();
 
 function agregarEventoActualizar() {
@@ -22,25 +22,22 @@ function agregarEventoActualizar() {
 async function actualizarOferta() {
     const inNombre = document.getElementById("nombreOferta").value;
     const inDescuento = document.getElementById("descuento").value;
+    const id = document.getElementById("ofertas").value;
     const update = {
         nombre:inNombre,
         descuento: inDescuento
     };
     configFetch.method = "PUT";
     configFetch.body = JSON.stringify(update);
-    const resData = await fetch(URLOferta, configFetch)
+    const resData = await fetch(URLOferta, id, configFetch)
         .then(res => res.json());
 
     alert(resData.status);
 }
 
-function agregarEventoId() {
-    const inNombre = document.getElementById("nombre");
-    inNombre.addEventListener("keyup", agregarCampos)
-}
 
 async function agregarCampos(event) {
-    const id = event.path[0].value;
+    const id = document.getElementById("ofertas").value;
 
 
     if (!/^ *$/.test(id)) {
@@ -53,11 +50,26 @@ async function agregarCampos(event) {
 }
 
 function cambiarValores(data) {
-    const inNombre = document.getElementById("nombre");
+    const inNombre = document.getElementById("nombreOferta");
     const inDescuento = document.getElementById("descuento");
 
     inNombre.value = data.nombre;
     inDescuento.value = data.descuento;
+}
+
+async function agregarLista(){
+    const selectOferta = document.getElementById("ofertas");
+    selectOferta.innerHTML = "";
+    const data = await obtenerListaOferta();
+    data.forEach(x=>{
+        selectOferta.innerHTML += `<option value="${x._id}">${x.nombre}</option>`;
+    });
+}
+
+async function obtenerListaOferta(){
+    return await fetch(URLOferta,{method:"GET",mode:"cors",headers: {
+        'Content-Type': 'application/json'
+    }}).then(response => response.json());
 }
 
 function agregarEventoRegresar() {

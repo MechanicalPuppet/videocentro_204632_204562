@@ -1,4 +1,4 @@
-const URLCliente = "http://localhost:3312/api/v1/cliente/";
+const URLCliente = "http://localhost:3000/api/v1/cliente/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
@@ -10,8 +10,8 @@ const configFetch = {
     }
 };
 
-agregarEventoRegresar();
-agregarEventoRegistrar();
+
+
 
 
 
@@ -21,7 +21,7 @@ function agregarEventoRegistrar(){
 }
 
 async function agregarCliente(){
-    const inUsuario = document.getElementById("usuario").value;
+    const inUsuario = document.getElementById("nombreCliente").value;
     const inContraseña = document.getElementById("contraseña").value;
     const inDireccion = document.getElementById("direccion").value;
     const inTelefono = document.getElementById("telefono").value;
@@ -55,3 +55,5 @@ function agregarEventoRegresar(){
 function regresar(_id){
     window.location=`../menuInicio.html?usuario=${_id}`;
 }
+
+agregarEventoRegistrar();

@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/stylepag.css" />
-    <title>Eliminar oferta</title>
+    <title>ELIMINAR OFERTA</title>
+        <meta charset="UTF-8">
+        <link href="/FrontEnd/estilos/estilosIndex.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body>
+  <body onload="agregarLista()">
     <main>
 
       <header>
-        <h1>Eliminar oferta</h1>
-        <label class="mensaje1" id="mensaje1"
-          >Ingrese el nombre de la oferta que desea eliminar
-        </label>
-      </header>
+        <h2> Videocentro "Silent Games" </h2> <h3><em> José Brandon Hernández y Victor Gutierrez</em> </h3>
+        
+    </header>
+     <nav>
+          <button type="button" name="back" onclick="history.back()"></button>
+        <ul>
+            
+            <li><a href="control?tarea=agregaroferta">¡Agregar oferta!</a></li>
+            <li><a href="control?tarea=editaroferta">¡Editar oferta!</a></li>
+            <li><a href="control?tarea=eliminaroferta">¡Eliminar oferta!</a></li>
+            <li><a href="control?tarea=consultarofertas">¡Consultar ofertas!</a></li>
+        </ul>
+        
+    </nav>
 
-      <section>
-        <div id="contenedor">
-        <input type="text" placeholder="Nombre de la oferta" required id="id">   
-        <br> 
-        <input type="submit" value="Eliminar" id="eliminar">
-        <br>
-        <input type="button" value="Cancelar" id="cancelar"> 
-        </div>
-      </section>
+     
 
-    </main>
+      <article>
+
+        <h1> ¡ELIMINAR OFERTA!</h1>
+
+        <section>
+          <div id="contenedor">
+            <select name="ofertas" id="ofertas">
+              <option value="Call Of Duty: Vanguard">Call Of Duty: Vanguard</option>
+              <option value="Halo Infinite">Halo Infinite</option>
+          </select>
+          <br> 
+          <input type="submit" value="Eliminar" id="eliminar">
+          <br>
+          <input type="button" value="Cancelar" id="cancelar"> 
+          </div>
+            </div>
+          </section>
+
+    </article>
+    <footer>
+            
+      <h5>Todos los derechos reservados.</h5>
+      <h6>Podría interesarte: <a href="https://ideasnuevas.net/wp-content/uploads/2016/08/Wallpapersxl-Perritos-Bonitos-Seguro-Que-Estabas-Esperando-Otro-Fondo-De-Perros-Pues-Ya-No-Tienes-276709-1440x1080.jpg">Contenido vital que todos deben ver.</a></h6>
+      
+      
+  </footer>
+    
     <script src="eliminarOferta.js"></script>
   </body>
 </html>

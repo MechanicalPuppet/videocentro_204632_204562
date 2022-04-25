@@ -10,7 +10,7 @@ class InventarioPersistencia{
         const dato = new inventarioModel({
             unidadesExistencia: nuevoDato.unidadesExistencia,
     unidadesTienda: nuevoDato.unidadesTienda,
-    videojuego: nuevoDato.videojuego
+    videojuego: nuevoDato.videojuego,
         });
         await dato.save();
         console.log('se agrego correctamente el dato: '+ nuevoDato.nombre )

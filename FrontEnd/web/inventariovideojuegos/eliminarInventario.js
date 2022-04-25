@@ -1,4 +1,4 @@
-const URLVideojuego = "http://localhost:3000/api/v1/videojuego/";
+const URLInventario = "http://localhost:3000/api/v1/inventario/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {

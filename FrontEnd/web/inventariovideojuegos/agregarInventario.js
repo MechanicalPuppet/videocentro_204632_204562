@@ -1,8 +1,9 @@
 const URLVideojuego = "http://localhost:3000/api/v1/videojuego/";
+const URLInventario = "http://localhost:3000/api/v1/inventario/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
-    method: 'DELETE',
+    method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
     headers: {
@@ -11,25 +12,37 @@ const configFetch = {
 };
 
 
-agregarEventoEliminar();
 
 
-function agregarEventoEliminar(){
-    const btnEliminar = document.getElementById("eliminar");
-    btnEliminar.addEventListener("click",eliminarVideojuego);
+
+
+function agregarEventoRegistrar(){
+    const btnRegistrar = document.getElementById("registrarte");
+    btnRegistrar.addEventListener("click",agregarVideojuego);
 }
 
+async function agregarVideojuego(){
+    const inExistencia = document.getElementById("existencia").value;
+    const inVideojuego = document.getElementById("videojuegos").value;
+    
+    const vid = {
+        unidadesExistencia:inExistencia,
+        unidadesTienda:inExistencia,
+        videojuego:{_id:inVideojuego},
+    };
 
-async function eliminarVideojuego(){
-    const textId = document.getElementById("videojuego").value;
-    const resData = await fetch(URLVideojuego+textId,configFetch)
+    console.log(vid);
+
+    configFetch.body = JSON.stringify(vid);
+
+    const resData= await fetch(URLInventario,configFetch)
     .then(res=> res.json());
 
     alert(resData.status);
 }
 
 async function agregarLista(){
-    const selectVideojuego = document.getElementById("videojuego");
+    const selectVideojuego = document.getElementById("videojuegos");
     selectVideojuego.innerHTML = "";
     const data = await obtenerListaOferta();
     data.forEach(x=>{
@@ -44,6 +57,7 @@ async function obtenerListaOferta(){
 }
 
 
+
 function agregarEventoRegresar(){
     const btnRegresar = document.getElementById("cancelar");
     btnRegresar.addEventListener("click",()=>{regresar(_id)});
@@ -52,3 +66,6 @@ function agregarEventoRegresar(){
 function regresar(_id){
     window.location=`../menuInicio.html?usuario=${_id}`;
 }
+
+
+agregarEventoRegistrar()

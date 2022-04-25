@@ -13,7 +13,7 @@ router.route("/").post(async (req, res) => {
     const inventarioNew = {
         unidadesExistencia: req.body.unidadesExistencia,
         unidadesTienda: req.body.unidadesTienda, 
-        videoJuego: req.body.videoJuego
+        videojuego: req.body.videojuego
     };
 
 

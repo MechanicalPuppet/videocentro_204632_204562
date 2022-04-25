@@ -11,7 +11,7 @@ and open the template in the editor.
         <link href="/FrontEnd/estilos/estilosIndex.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body onload="agregarLista()">
         
         <header>
             <h2> Videocentro "Silent Games" </h2> <h3><em> José Brandon Hernández y Victor Gutierrez</em> </h3>
@@ -35,10 +35,14 @@ and open the template in the editor.
 
             <section>
                 <div id="contenedor">
-                <input type="text" placeholder="Nombre de la oferta" required id="nombreOferta">
-                <hr>
+                    <select name="ofertas" id="ofertas">
+                        <option value="Call Of Duty: Vanguard">Call Of Duty: Vanguard</option>
+                        <option value="Halo Infinite">Halo Infinite</option>
+                    </select>
                 <br>
-                <input type="number" placeholder="Descuento" required id="descuento">
+                <input type="text" placeholder="Nombre de la oferta" required id="nombreOferta">
+                <br>
+                <input type="number" placeholder="Descuento" id="descuento">
                 <br>
                 <input type="submit" value="Actualizar" id="actualizar">
                 <br>
@@ -46,7 +50,7 @@ and open the template in the editor.
                 </div>
               </section>
         
-            </main>
+         
             <script src="actualizarOferta.js"></script>
             
 
@@ -59,5 +63,6 @@ and open the template in the editor.
             
             
         </footer>
+        
     </body>
 </html>
