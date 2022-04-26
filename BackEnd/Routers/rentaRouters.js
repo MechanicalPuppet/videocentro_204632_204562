@@ -24,7 +24,7 @@ router.route("/").post(async (req, res) => {
 
     res.status(201).json({
         status: 'Agregado',
-        body: inventarioNew
+        body: rentaNew
     });
 
 }).put(async (req, res) => {

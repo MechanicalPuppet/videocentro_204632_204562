@@ -13,7 +13,7 @@ class InventarioPersistencia{
     videojuego: nuevoDato.videojuego,
         });
         await dato.save();
-        console.log('se agrego correctamente el dato: '+ nuevoDato.nombre )
+        console.log('se agrego correctamente el dato: '+ nuevoDato.unidadesExistencia )
         return dato;
     }
 
