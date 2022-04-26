@@ -2,7 +2,7 @@ const URLInventario = "http://localhost:3000/api/v1/inventario/";
 const sessionUser = new URLSearchParams(window.location.search);
 const _id = sessionUser.get("usuario");
 const configFetch = {
-    method: 'DELETE',
+    method: 'PUT',
     mode: 'cors',
     cache: 'no-cache',
     headers: {
@@ -21,24 +21,31 @@ function agregarEventoEliminar(){
 
 
 async function eliminarVideojuego(){
-    const textId = document.getElementById("videojuego").value;
-    const resData = await fetch(URLVideojuego+textId,configFetch)
+    const textId = document.getElementById("inventario").value;
+    const nuevo = document.getElementById("nuevo").value;
+    const body= JSON.stringify({
+        unidadesExistencia:nuevo
+    });
+
+    configFetch.body = body;
+
+    const resData = await fetch(URLInventario+textId,configFetch)
     .then(res=> res.json());
 
     alert(resData.status);
 }
 
 async function agregarLista(){
-    const selectVideojuego = document.getElementById("videojuego");
-    selectVideojuego.innerHTML = "";
+    const selectInventario = document.getElementById("inventario");
+    selectInventario.innerHTML = "";
     const data = await obtenerListaOferta();
     data.forEach(x=>{
-        selectVideojuego.innerHTML += `<option value="${x._id}">${x.nombre}</option>`;
+        selectInventario.innerHTML += `<option value="${x._id}">${x._id}</option>`;
     });
 }
 
 async function obtenerListaOferta(){
-    return await fetch(URLVideojuego,{method:"GET",mode:"cors",headers: {
+    return await fetch(URLInventario,{method:"GET",mode:"cors",headers: {
         'Content-Type': 'application/json'
     }}).then(response => response.json());
 }

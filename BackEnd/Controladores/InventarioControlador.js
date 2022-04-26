@@ -34,7 +34,8 @@ class InventarioPersistencia{
             _id: idBuscar
         }, {
             $set: {
-                unidadesExistencia: numExistencias
+                unidadesExistencia: numExistencias,
+                unidadesTienda: numExistencias
             }
         });
         if (user.modifiedCount != 0){

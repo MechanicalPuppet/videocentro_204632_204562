@@ -24,18 +24,7 @@ router.route("/").post(async (req, res) => {
         body: inventarioNew
     });
 
-}).put(async (req, res) => {
-    const inventarioNew = {
-        unidadesExistencia: req.body.unidadesExistencia // ! NO SABEMOS QUÉ SUCEDE AQUÍ AYUDA POR FAVOR POR QUÉ ESTÁN SIMILARES A LOS DE ARRIBA?
-    };
-
-    const data = await inventario.actualizarDato(inventarioNew);
-    res.status(201).json({
-        status: 'Actualizado',
-        body: data
-
-    });
-});
+})
 
 
 router.route("/:id").get(async (req, res) => {
@@ -50,6 +39,16 @@ router.route("/:id").get(async (req, res) => {
     res.status(201).json({
         status: 'Eliminado',
         body: data
+    });
+}).put(async (req, res) => {
+    const id = req.params.id;
+    const numExist=req.body.unidadesExistencia;
+
+    const data = await inventario.actualizarDato(id,numExist);
+    res.status(201).json({
+        status: 'Actualizado',
+        body: data
+
     });
 });
 

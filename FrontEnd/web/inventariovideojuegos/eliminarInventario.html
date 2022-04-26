@@ -17,22 +17,22 @@
         <button type="button" name="back" onclick="history.back()"></button>
       <ul>
           
-          <li><a href="control?tarea=agregarvideojuego">¡Agregar videojuego!</a></li>
-          <li><a href="control?tarea=editarvideojuego">¡Editar videojuego!</a></li>
-          <li><a href="control?tarea=eliminarvideojuego">¡Eliminar videojuego!</a></li>
-          <li><a href="control?tarea=consultarvideojuegos">¡Consultar videojuegos!</a></li>
+        <li><a href="agregarInventario.html">¡Agregar Iventario!</a></li>
+        <li><a href="eliminarInventario.html">¡Desinventarear!</a></li>
       </ul>
       
   </nav>
   
   <article>
-      <h1> ¡AGREGAR VIDEOJUEGO!</h1>
+      <h1> ¡DESINVENTAREAR!</h1>
       <form >
-        <div id="contenedor">
-          <select name="videojuego" id="videojuego">
+        <div id="contenedor">          
+          <select name="inventario" id="inventario">
             <option value="Call Of Duty: Vanguard">Call Of Duty: Vanguard</option>
             <option value="Halo Infinite">Halo Infinite</option>
         </select>
+        <br>
+        <li><input type="number" id="nuevo" name="Nuevo" placeholder="Existencia" min="1" max ="1000" style="width: 200px" required/> </li>
         <br>  
           <input type="submit" value="Eliminar" id="eliminar">
           <br>
@@ -50,6 +50,6 @@
       
   </footer>
     
-    <script src="eliminarVideojuego.js"></script>
+    <script src="eliminarInventario.js"></script>
   </body>
 </html>
