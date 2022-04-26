@@ -5,25 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/FrontEnd/estilos/estilosIndex.css" />
-    <title>Consultar ofertas</title>
+    <title>Consultar videojuegos</title>
   </head>
   <tbody>
     <main>
       <header>
-        <h1>Consultar ofertas</h1>
+        <h1>Consultar videojuegos</h1>
         <label class="mensaje1" id="mensaje1"
-          >Lista de los ofertas registradas
+          >Lista de los videojuegos registradas
         </label>
       </header>
 
       <nav>
         <button type="button" name="back" onclick="history.back()"></button>
         <ul>
-          <li><a href="/FrontEnd/web/ofertas/agregarOferta.html">¡Agregar oferta!</a></li>
-          <li><a href="/FrontEnd/web/ofertas/editarOferta.html">¡Editar oferta!</a></li>
-          <li><a href="/FrontEnd/web/ofertas/eliminarOferta.html">¡Eliminar oferta!</a></li>
+          <li><a href="/agregarOferta.html">¡Agregar videojuego!</a></li>
+          <li><a href="control?tarea=editaroferta">¡Editar videojuego!</a></li>
+          <li><a href="control?tarea=eliminaroferta">¡Eliminar videojuego!</a></li>
           <li>
-            <a href="/FrontEnd/web/ofertas/consultarOfertas.html">¡Consultar ofertas!</a>
+            <a href="control?tarea=consultarvideojuegos">¡Consultar videojuegos!</a>
           </li>
         </ul>
       </nav>
@@ -34,6 +34,9 @@
             <thead>
               <tr>
                 <th>Nombre</th>
+                <th>Precio</th>
+                <th>Empresa</th>
+                <th>Categoria</th>
                 <th>Oferta</th>
               </tr>
             </thead>
@@ -42,13 +45,13 @@
             </tbody>
           </table>
           </div>
-          <input type="button" value="Consultar ofertas" id="consultarOfertas"/>
+          <input type="button" value="Consultar videojuegos" id="consultarvideojuegos"/>
           <input type="button" value="Cancelar" id="cancelar" />
           
         </div>
       </section>
     </main>
-    <script src="consultarOferta.js"></script>
+    <script src="consultarVideojuego.js"></script>
     <footer>
       <h5>Todos los derechos reservados.</h5>
       <h6>
