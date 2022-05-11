@@ -35,7 +35,6 @@ class InventarioPersistencia{
         }, {
             $set: {
                 unidadesExistencia: numExistencias,
-                unidadesTienda: numExistencias
             }
         });
         if (user.modifiedCount != 0){
