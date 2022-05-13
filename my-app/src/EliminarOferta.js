@@ -1,32 +1,48 @@
-import React from "react";
-
+import  React,{useEffect,setState} from 'react';
 class EliminarOferta extends React.Component {
   
   URLOferta = "http://localhost:3000/api/v1/oferta/";
   configFetch = {
     method: 'DELETE',
-    mode: 'cors',
-    cache: 'no-cache',
-    headers: {
-        'Content-Type': 'application/json'
+   mode: 'cors',
+   cache: 'no-cache',
+   headers: {
+       'Content-Type': 'application/json'
     }
-};
-  
+  };
   constructor(props){
-    super(props)
-    this.lista = {}
-
+    super(props);
+    this.state = {
+      items : [],
+      itemSelected: ""
+    }
   }
+  
+  componentDidMount(){
+    this.obtenerListaOferta().then(x=>this.setState({items:x}));
+  }
+
   async obtenerListaOferta(){
     return await fetch(this.URLOferta,{method:"GET",mode:"cors",headers: {
       'Content-Type': 'application/json'
     }}).then(response => response.json());
   }
 
-  async agregarLista(){
-    this.lista = await this.obtenerListaOferta();    
+  eliminarOferta = async () => {
+    const id= this.state.itemSelected;
+    await fetch(this.URLOferta+id,this.configFetch)
+    .then(x=>alert("Eliminado!!"))
+    .catch(error=>alert("No se elimino :p"));
+    const resp = await this.obtenerListaOferta();
+    this.setState({items:resp});
   }
-  
+
+  setSelectedItem= (e)=> {
+    this.setState({
+      itemSelected:e.target.value
+    });
+  }
+
   render(){
     return (
       <div>
@@ -37,43 +53,33 @@ class EliminarOferta extends React.Component {
             </h3>
           </header>
           <nav>
-            <button type="button" name="back" ></button>
+            <button type="button" name="back">Regresar</button>
             <ul>
-              <li>
-                <a onClick={()=> window.open("http://127.0.0.1:5501/FrontEnd/web/ofertas/agregarOferta.html","")}>¡Agregar oferta!</a> 
+            <li>
+                <a href='#' onClick={()=> window.open("http://127.0.0.1:5501/FrontEnd/web/ofertas/agregarOferta.html","")}>¡Agregar oferta!</a> 
               </li>
               <li>
-                <a onClick={()=> window.open("http://127.0.0.1:5501/FrontEnd/web/ofertas/eliminarOferta.html", "")}>¡Eliminar oferta!</a>
+                <a href='#' onClick={()=> window.open("http://127.0.0.1:5501/FrontEnd/web/ofertas/eliminarOferta.html", "")}>¡Eliminar oferta!</a>
               </li>
               <li>
-                <a onClick={()=> window.open("http://127.0.0.1:5501/FrontEnd/web/ofertas/consultarOferta.html", "")}>¡Consultar ofertas!</a>
+                <a href='#' onClick={()=> window.open("http://127.0.0.1:5501/FrontEnd/web/ofertas/consultarOferta.html", "")}>¡Consultar ofertas!</a>
               </li>
             </ul>
           </nav>
           
           <article>
-            <h1> ¡ELIMINAR OFERTA!</h1>
+            <h1>¡ELIMINAR OFERTA!</h1>
             <section>
               <div id="contenedor">
-                <select  id="ofertas">
-                  {
-                    /*
-                    this.lista(data=>(
-                      <option value={data._id}>
-                      {data.nombre}
-                      </option>
-                    ))
-                  */
-                  }
-                  <option value="Call Of Duty: Vanguard">
-                    Call Of Duty: Vanguard
-                  </option>
-                  <option value="Halo Infinite">
-                    Halo Infinite
-                    </option>
-                </select>
+                  <select name="oferta" onChange={this.setSelectedItem} className="form-control" >
+                    {
+                      this.state.items.map(item=>(
+                        <option key={item._id} value={item._id}>{item.nombre}</option>
+                      ))
+                    }
+                  </select>
                 <br />
-                <input type="submit" value="Eliminar" id="eliminar" />
+                <input onClick={this.eliminarOferta} type="submit" value="Eliminar" id="eliminar" />
                 <br />
                 <input type="button" value="Cancelar" id="cancelar" />
               </div>
@@ -84,7 +90,7 @@ class EliminarOferta extends React.Component {
       ); 
   }
   
-};
+}
 
 export default EliminarOferta;
  
